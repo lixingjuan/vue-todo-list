@@ -6,14 +6,40 @@
  -->
 <template>
   <div>
-    <ul v-for="item in itemsProps" v-bind:key="item.index">
-      <li>
-        <input type="checkbox" v-model="item.checked" />
+    <a-list
+      v-for="item in itemsProps"
+      v-bind:key="item.index"
+      class="demo-loadmore-list"
+      :loading="loading"
+      itemLayout="horizontal"
+      :dataSource="data"
+    >
+      <div
+        v-if="showLoadingMore"
+        slot="loadMore"
+        :style="{
+          textAlign: 'center',
+          marginTop: '12px',
+          height: '32px',
+          lineHeight: '32px'
+        }"
+      ></div>
+      <a-list-item>
+        <a-checkbox
+          @change="onChange"
+          v-model="item.checked"
+          :class="'checkBox'"
+        />
         {{ item.text }}
         {{ item.checked }}
-        <button @click="toHandleDeleteItem(item.uuid)">删除</button>
-      </li>
-    </ul>
+        <a-button
+          @click="toHandleDeleteItem(item.uuid)"
+          type="danger"
+          :class="'float-left'"
+          >删除</a-button
+        >
+      </a-list-item>
+    </a-list>
   </div>
 </template>
 
@@ -42,4 +68,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.checkBox {
+  margin-right: 3%;
+}
+.float-left {
+  float: left;
+}
+</style>

@@ -7,10 +7,16 @@
 import Vue from "vue";
 import Router from "vue-router";
 import todoList from "@/todoList/index.vue";
+import todoList1 from "@/todoList-2/index.vue";
+import todoList2 from "@/todoList-2/index.vue";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
-  routes: [{ path: "/todoList", name: "todoList", component: todoList }]
+  routes: [
+    { path: "/todoList", name: "todoList", component: todoList },
+    { path: "/todoList1", name: "todoList1", component: todoList1 },
+    { path: "/todoList2", name: "todoList2", component: todoList2 }
+  ]
 });

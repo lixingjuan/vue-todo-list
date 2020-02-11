@@ -5,25 +5,11 @@
  * @copyright: Copyright (c) 2019, Hand
  -->
 <template>
-  <div :class="['auto-center', 'wrap']">
-    <a-row :type="'flex'" :justify="'center'">
-      <a-col :span="8">
-        <a-input
-          v-model="inputData"
-          @keyup.enter="addItem()"
-          v-bind:placeholder="'请输入代办事项'"
-        />
-      </a-col>
-      <a-col :span="2">
-        <a-button @click="addItem()" type="primary" icon="plus">添加</a-button>
-      </a-col>
-    </a-row>
-    <a-row :type="'flex'">
-      <todo-item
-        :itemsProps="items"
-        @handleDeleteItemProps="handleDeleteItem"
-      />
-    </a-row>
+  <div>
+    <input v-model="inputData" @keyup.enter="addItem()" />
+    <p></p>
+    <button @click="addItem()">添加</button>
+    <todo-item :itemsProps="items" @handleDeleteItemProps="handleDeleteItem" />
   </div>
 </template>
 
@@ -33,9 +19,6 @@ import uuid from "uuid";
 
 export default {
   name: "todoList",
-  components: {
-    TodoItem
-  },
   data() {
     return {
       inputData: "",
@@ -67,16 +50,11 @@ export default {
       window.console.log("父组件打印的", uuid);
       this.items = this.items.filter(item => item.uuid !== uuid);
     }
+  },
+  components: {
+    TodoItem
   }
 };
 </script>
 
-<style scoped>
-.wrap {
-  width: 50%;
-  margin: 0 auto;
-}
-.auto-center {
-  margin: 0 auto;
-}
-</style>
+<style scoped></style>

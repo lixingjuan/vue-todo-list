@@ -6,7 +6,18 @@
  */
 import Vue from "vue";
 import App from "./App.vue";
+import { Button, Input, Row, Col, List, Checkbox } from "ant-design-vue/lib";
+import "ant-design-vue/dist/antd.css";
+
 import router from "./router";
+
+Vue.component(Button.name, Button);
+Vue.component(Input.name, Input);
+Vue.component(Row.name, Row);
+Vue.component(Col.name, Col);
+Vue.component(Checkbox.name, Checkbox);
+Vue.component(List.name, List);
+Vue.component(List.Item.name, List.Item);
 
 Vue.config.productionTip = false;
 

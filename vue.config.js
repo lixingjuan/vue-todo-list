@@ -14,6 +14,13 @@ const path = require("path"); // node
 // }
 
 module.exports = {
+  /* pluginOptions: {
+    import: {
+      libraryName: "ant-design-vue",
+      libraryDirectory: "es",
+      style: true
+    }
+  }, */
   css: {
     loaderOptions: {
       stylus: {
