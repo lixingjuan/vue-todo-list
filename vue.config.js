@@ -7,6 +7,7 @@
 // const vuxLoader = require("vux-loader");
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === "production" ? "/vue-todo-list/" : "/",
   devServer: {
     proxy: "http://localhost:4000" // 配置跨域代理
   },
