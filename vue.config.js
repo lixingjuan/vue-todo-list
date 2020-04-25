@@ -1,46 +1,29 @@
 /*
  * @version: 0.0.1
  * @Author: lixingjuan <xingjuan.li@hand-china.com>
- * @Date: 2020-01-29 11:20:01
+ * @Date: 2020-02-05 21:51:09
  * @copyright: Copyright (c) 2019, Hand
  */
-// const webpack = require('webpack')  // 引入webpack
-const path = require("path"); // node
-// const appData = require('./data.json')  //
-// const seller = appData.seller
-
-// function resolve(dir) {             // 拼接路径
-//   return path.join(__dirname, dir)
-// }
+// const vuxLoader = require("vux-loader");
 
 module.exports = {
-  /* pluginOptions: {
-    import: {
-      libraryName: "ant-design-vue",
-      libraryDirectory: "es",
-      style: true
-    }
-  }, */
+  devServer: {
+    proxy: "http://localhost:4000" // 配置跨域代理
+  },
   css: {
+    sourceMap: true, // 是否开始sourceMap
     loaderOptions: {
-      stylus: {
-        "resolve url": true,
-        import: ["./src/theme"]
+      less: {
+        javascriptEnabled: true
+        // prependData: `@import "@/styles/global.less";`
       },
-      sass: {
-        data: `@import "@/assets/styles/general.scss";`
+      scss: {
+        prependData: "@import \"@/styles/global.scss\";"
       }
     }
+  },
+  configureWebpack: config => {
+    // 修复HMR失效问题？？？是为啥？
+    config.resolve.symlinks = true;
   }
-  // chainWebpack(config) {
-  // // 别名
-  // config.resolve.alias
-  //   .set('components', resolve('src/components'))
-  //   .set('common', resolve('src/common'))
-  //   .set('api', resolve('src/api'))
-
-  // config.plugin('context')
-  //   .use(webpack.ContextReplacementPlugin,
-  //     [/moment[/\\]locale$/, /zh-cn/])
-  // },
 };
