@@ -1,15 +1,19 @@
 <template>
-  <ul>
-    <li v-for="item in todolistArr" :key="item.uuid">{{ item.todoText }}</li>
-    <li>2</li>
+  <ul id="todoList">
+    <todo-item v-for="item in todolistArr" :key="item.uuid" :todoItemProps="item" />
   </ul>
 </template>
 
 <script>
 import { mapState } from "vuex";
+
+import TodoItem from "./TodoItem";
+
 export default {
   name: "",
-  components: {},
+  components: {
+    TodoItem
+  },
   props: {},
   data() {
     return {};
@@ -25,4 +29,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#todoList {
+  width: 80%;
+  margin: 0 auto;
+  /* display: flex; */
+  /*TODO: 子元素并未设置margin的时候，该属性也失效了 justify-content: center; */
+  /* flex-direction: column; */
+}
+</style>

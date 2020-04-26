@@ -8,6 +8,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import { Button, Input, Row, Col, List, Checkbox } from "ant-design-vue/lib";
 import "ant-design-vue/dist/antd.css";
+import "reset-css";
 
 import store from "./store";
 

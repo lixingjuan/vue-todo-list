@@ -34,6 +34,9 @@ export default {
   border: 5px solid #4c8f38;
   margin: 0 auto;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* position: relative;
   left: 10%;
   top: 50%; */

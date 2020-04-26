@@ -6,20 +6,21 @@
  */
 import Vue from "vue";
 import Router from "vue-router";
+// import Index from "@/views/";
 import TodoListPage from "@/views/TodoListPage";
-import todoList from "@/todoList/index.vue";
-import todoList1 from "@/todoList-2/index.vue";
-import todoList2 from "@/todoList-2/index.vue";
+// import todoList1 from "@/todoList-2/index.vue";
+// import todoList2 from "@/todoList-2/index.vue";
 
 Vue.use(Router);
 
 export default new Router({
-  mode: "history",
+  // mode: "history",
   routes: [
-    { path: "/", name: "TodoListPage", component: TodoListPage },
-    { path: "/TodoListPage", name: "TodoListPage", component: TodoListPage },
-    { path: "/todoList", name: "todoList", component: todoList },
-    { path: "/todoList1", name: "todoList1", component: todoList1 },
-    { path: "/todoList2", name: "todoList2", component: todoList2 }
+    // { path: "/", name: "Index", component: Index }
+    { path: "/", name: "TodoListPage", component: TodoListPage }
+    // { path: "/TodoListPage", name: "TodoListPage", component: TodoListPage },
+    // { path: "/todoList", name: "todoList", component: todoList },
+    // { path: "/todoList1", name: "todoList1", component: todoList1 },
+    // { path: "/todoList2", name: "todoList2", component: todoList2 }
   ]
 });
