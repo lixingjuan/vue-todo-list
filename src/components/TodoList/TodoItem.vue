@@ -4,7 +4,7 @@
       {{ todoItemProps.todoText }}
     </span>
     <div class="changeItemStatus">
-      <input class="itemFinish" type="checkbox" :checked="!todoItemProps.isTodo" />
+      <input type="checkbox" v-model="checkedStatus" />
       <span class="itemDelete" @click="deleteTodoItem">+</span>
     </div>
   </li>
@@ -21,30 +21,31 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      checkedStatus: !this.todoItemProps.isTodo
+    };
   },
   computed: {
-    isTodo() {
-      const { isTodo } = this.todoItemProps;
-      return isTodo;
+    uuid: function() {
+      const { uuid } = this.todoItemProps;
+      return uuid;
     }
   },
   watch: {
-    isTodo: function() {
-      console.log(1111);
+    checkedStatus: function() {
+      console.log(this.checkedStatus);
       this.$store.commit("toggoleTodoItem", {
-        ...this.todoItemProps,
-        isTodo: !this.todoItemProps.isTodo
+        uuid: this.uuid,
+        isTodo: !this.checkedStatus
       });
     }
   },
-  created() {},
+  created() {
+    console.log(this.todoItemProps);
+  },
   methods: {
     deleteTodoItem() {
-      this.$store.commit("deleteTodoItem", this.inputItem);
-    },
-    changeItemStatus() {
-      this.$store.commit("deleteTodoItem", this.inputItem);
+      this.$store.commit("deleteTodoItem", this.uuid);
     }
   }
 };
@@ -76,6 +77,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .item-finish-wrapper {
+    }
     .itemFinish::selection {
       color: #fff;
       background: #1890ff;

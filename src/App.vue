@@ -24,5 +24,6 @@ html,
 body,
 #app {
   height: 100%;
+  background-color: aliceblue;
 }
 </style>

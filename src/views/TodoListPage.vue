@@ -37,6 +37,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
   /* position: relative;
   left: 10%;
   top: 50%; */
