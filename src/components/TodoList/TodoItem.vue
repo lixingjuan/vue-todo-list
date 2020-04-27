@@ -1,19 +1,34 @@
 <template>
-  <li class="todoItem">
+  <li class="todo-item-container">
     <span :class="{ itemText: true, hadDone: !todoItemProps.isTodo }">
       {{ todoItemProps.todoText }}
     </span>
-    <div class="changeItemStatus">
-      <input type="checkbox" v-model="checkedStatus" />
-      <span class="itemDelete" @click="deleteTodoItem">+</span>
+    <div class="change-item-status">
+      <!-- <input type="checkbox" v-model="checkedStatus" /> -->
+      <base-checkbox
+        :checkedStatusProps="checkedStatus"
+        @getCheckboxStatusEvent="getCheckboxStatus"
+      />
+
+      <span
+        @click="deleteTodoItem"
+        @keydown="changeDeleteStyle"
+        :class="{ 'item-delete': true, 'delete-icon-is-clicking': deleteIconIsClicking }"
+      >
+        +
+      </span>
     </div>
   </li>
 </template>
 
 <script>
+import { BaseCheckbox } from "@/components/BaseComponents";
+
 export default {
   name: "",
-  components: {},
+  components: {
+    BaseCheckbox
+  },
   props: {
     todoItemProps: {
       type: Object,
@@ -22,7 +37,8 @@ export default {
   },
   data() {
     return {
-      checkedStatus: !this.todoItemProps.isTodo
+      checkedStatus: !this.todoItemProps.isTodo,
+      deleteIconIsClicking: false
     };
   },
   computed: {
@@ -46,14 +62,21 @@ export default {
   methods: {
     deleteTodoItem() {
       this.$store.commit("deleteTodoItem", this.uuid);
+    },
+    changeDeleteStyle() {
+      console.log(1);
+      this.deleteIconIsClicking = !this.deleteIconIsClicking;
+    },
+    getCheckboxStatus(checkedStatus) {
+      this.checkedStatus = checkedStatus;
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.todoItem {
-  width: 70%;
+.todo-item-container {
+  width: 80%;
   min-height: 50px;
   border: 2px solid #f0f0f0;
   font-size: 14px;
@@ -66,14 +89,17 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:hover {
+    border-color: #3dbcf6;
+  }
   .itemText {
     color: rgba(0, 0, 0, 0.65);
   }
   .hadDone {
     text-decoration: line-through;
   }
-  .changeItemStatus {
-    width: 8%;
+  .change-item-status {
+    width: 12%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -83,10 +109,14 @@ export default {
       color: #fff;
       background: #1890ff;
     }
-    .itemDelete {
+    .item-delete {
       transform: rotate(45deg);
       color: #000;
       font-size: 60px;
+      display: inline-block;
+    }
+    .delete-icon-is-clicking {
+      color: #dedede;
     }
   }
 }

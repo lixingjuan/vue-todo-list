@@ -8,22 +8,13 @@
 </template>
 
 <script>
-import { TodoList, TodoInput } from "../components/TodoList";
+import { TodoList, TodoInput } from "@/components/TodoList";
 
 export default {
-  name: "",
   components: {
     TodoList,
     TodoInput
-  },
-  props: {},
-  data() {
-    return {};
-  },
-  computed: {},
-  watch: {},
-  created() {},
-  methods: {}
+  }
 };
 </script>
 
@@ -38,8 +29,6 @@ export default {
   flex-direction: column;
   align-items: center;
   overflow: scroll;
-  /* position: relative;
-  left: 10%;
-  top: 50%; */
+  border-radius: 30px;
 }
 </style>

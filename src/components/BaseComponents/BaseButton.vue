@@ -1,11 +1,9 @@
 <!--
 - 点击按钮时的回调 onClick
-
-
 -->
 <template>
   <button id="button" @click="buttonClickEvent">
-    <span>按钮</span>
+    <span>{{ buttonText || "按钮" }}</span>
   </button>
 </template>
 
@@ -14,10 +12,10 @@ export default {
   name: "",
   components: {},
   props: {
-    // onClick: {
-    //   type: Function,
-    //   required: false
-    // }
+    buttonText: {
+      type: String,
+      required: false
+    }
   },
   data() {
     return {};
@@ -27,7 +25,6 @@ export default {
   created() {},
   methods: {
     buttonClickEvent() {
-      console.log(1);
       this.$emit("onClick");
     }
   }
@@ -36,7 +33,7 @@ export default {
 
 <style scoped lang="scss">
 #button {
-  width: 100px;
+  // width: 100px;
   height: 40px;
   line-height: 2;
   position: relative;

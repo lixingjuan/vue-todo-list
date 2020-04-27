@@ -1,9 +1,7 @@
 <template>
-  <ul id="todoList">
-    <transition-group name="list" tag="p">
-      <todo-item v-for="item in todolistArr" :key="item.uuid" :todoItemProps="item" />
-    </transition-group>
-  </ul>
+  <transition-group name="list" tag="ul" id="todoList">
+    <todo-item v-for="item in todolistArr" :key="item.uuid" :todoItemProps="item" />
+  </transition-group>
 </template>
 
 <script>

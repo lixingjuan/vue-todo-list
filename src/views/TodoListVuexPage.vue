@@ -5,7 +5,7 @@
  * @copyright: Copyright (c) 2019, Hand
  -->
 <template>
-  <div>
+  <div id="pageContainer">
     <input v-model="inputData" @keyup.enter="addItem()" />
     <p></p>
     <button @click="addItem()">添加</button>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import TodoItem from "./components/index";
+import TodoItem from "@/components/TodoListProps";
 import uuid from "uuid";
 
 export default {
@@ -57,4 +57,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@import "../styles/global.scss";
+</style>

@@ -1,7 +1,7 @@
 <template>
-  <div id="inputWrap">
+  <div id="input-wrap">
     <!-- <base-input :inputValue="inputItem"></base-input> -->
-    <input v-model="inputItem" />
+    <input v-model="inputItem" placeholder="请输入待办事项" @keyup.enter="addTodoItem" />
     <base-button @onClick="addTodoItem"></base-button>
   </div>
 </template>
@@ -39,26 +39,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#inputWrap {
+#input-wrap {
   width: 80%;
   display: flex;
   justify-content: center;
   margin-top: 30px;
   input {
+    color: rgba(0, 0, 0, 0.65);
     width: 60%;
     height: 40px;
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-variant: tabular-nums;
-    list-style: none;
-    font-feature-settings: "tnum";
-    position: relative;
     display: inline-block;
-    min-width: 0;
     padding: 4px 11px;
-    color: rgba(0, 0, 0, 0.65);
+    position: relative;
     font-size: 14px;
+    min-width: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-variant: tabular-nums;
+    font-feature-settings: "tnum";
     line-height: 1.5715;
     background-color: #fff;
     background-image: none;
