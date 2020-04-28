@@ -2,7 +2,7 @@
   <div id="input-wrap">
     <!-- <base-input :inputValue="inputItem"></base-input> -->
     <input v-model="inputItem" placeholder="请输入待办事项" @keyup.enter="addTodoItem" />
-    <base-button @onClick="addTodoItem"></base-button>
+    <base-button @onClick="addTodoItem" :buttonText="'ADD'" />
   </div>
 </template>
 
@@ -43,7 +43,6 @@ export default {
   width: 80%;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
   input {
     color: rgba(0, 0, 0, 0.65);
     width: 60%;

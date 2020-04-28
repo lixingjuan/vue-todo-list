@@ -6,11 +6,15 @@
  -->
 <template>
   <div id="app">
-    <div id="button-group">
-      <base-button @onClick="switchPage('TodoListPage')" :buttonText="'todolist-full-version'" />
-      <base-button @onClick="switchPage('TodoListPropsPage')" :buttonText="'todolist-normal'" />
-      <base-button @onClick="switchPage('TodoListVuexPage')" :buttonText="'todolist-vuex'" />
-    </div>
+    <!-- <div id="header">
+      <div id="button-group">
+        <base-button @onClick="switchPage('TodoListPage')" :buttonText="'todolist-full-version'" />
+        <base-button @onClick="switchPage('TodoListPropsPage')" :buttonText="'todolist-normal'" />
+        <base-button @onClick="switchPage('TodoListVuexPage')" :buttonText="'todolist-vuex'" />
+      </div>
+      <base-rainbow></base-rainbow>
+    </div> -->
+    <app-header></app-header>
     <transition name="page" tag="div" id="todoList">
       <router-view></router-view>
     </transition>
@@ -18,19 +22,12 @@
 </template>
 
 <script>
-import { BaseButton } from "@/components/BaseComponents";
+import { AppHeader } from "./components/App/index";
 
 export default {
   name: "app",
-  components: {
-    BaseButton
-  },
-  methods: {
-    switchPage(targetPageName) {
-      console.log(this.$router.params);
-      this.$router.push({ name: targetPageName });
-    }
-  }
+  components: { AppHeader },
+  methods: {}
 };
 </script>
 
@@ -40,13 +37,8 @@ body,
 #app {
   height: 100%;
   background-color: aliceblue;
-  #button-group {
-    margin-top: 30px;
-    button {
-      margin-left: 30px;
-    }
-  }
 }
+
 .page-enter-active,
 .page-leave-active {
   transition: all 1s;

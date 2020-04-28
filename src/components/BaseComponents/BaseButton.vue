@@ -33,17 +33,15 @@ export default {
 
 <style scoped lang="scss">
 #button {
-  // width: 100px;
-  height: 40px;
-  line-height: 2;
+  height: 30px;
+  border: 1px solid transparent;
+  display: flexbox;
   position: relative;
-  display: inline-block;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
   font-weight: 400;
   white-space: nowrap;
-  text-align: center;
   background-image: none;
-  border: 1px solid transparent;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   user-select: none;
@@ -52,8 +50,8 @@ export default {
   font-size: 14px;
   border-radius: 2px;
   color: #fff;
-  background-color: #1890ff;
-  border-color: #1890ff;
+  background-color: #f3d52c;
+  border-color: #ec8d11;
   span {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   }
