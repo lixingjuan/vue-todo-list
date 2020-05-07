@@ -1,24 +1,11 @@
 # vue-todo-list
 
-## Project setup
-```
-yarn install
-```
+```bash
 
-### Compiles and hot-reloads for development
-```
+# 安装依赖
+yarn
+
+# 启动
 yarn serve
-```
 
-### Compiles and minifies for production
 ```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

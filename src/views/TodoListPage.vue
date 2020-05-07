@@ -1,12 +1,8 @@
 <template>
   <div id="page-container">
     <div id="page-container-button-group">
-      <!-- <base-button @onClick="switchTheme" buttonText="更换主题" /> -->
       <base-button @onClick="deleteAll" buttonText="删除全部" />
     </div>
-    <!-- <div :class="currentTheme">
-      测试文本
-    </div> -->
 
     <todo-input></todo-input>
     <todo-list></todo-list>
