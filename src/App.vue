@@ -6,15 +6,7 @@
  -->
 <template>
   <div id="app">
-    <!-- <div id="header">
-      <div id="button-group">
-        <base-button @onClick="switchPage('TodoListPage')" :buttonText="'todolist-full-version'" />
-        <base-button @onClick="switchPage('TodoListPropsPage')" :buttonText="'todolist-normal'" />
-        <base-button @onClick="switchPage('TodoListVuexPage')" :buttonText="'todolist-vuex'" />
-      </div>
-      <base-rainbow></base-rainbow>
-    </div> -->
-    <app-header></app-header>
+    <!-- <app-header></app-header> -->
     <transition name="page" tag="div" id="todoList">
       <router-view></router-view>
     </transition>
@@ -22,11 +14,11 @@
 </template>
 
 <script>
-import { AppHeader } from "./components/App/index";
+// import { AppHeader } from "./components/App/index";
 
 export default {
   name: "app",
-  components: { AppHeader },
+  // components: { AppHeader },
   methods: {}
 };
 </script>
