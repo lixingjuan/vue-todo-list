@@ -12,6 +12,13 @@ import { Button, Input, Row, Col, List, Checkbox } from "ant-design-vue/lib";
 
 import store from "./store";
 import router from "./router";
+import {
+  BaseInput,
+  BaseButton,
+  BaseRainbow,
+  BaseCheckbox,
+  BaseDeleteButton
+} from "@/components/BaseComponents";
 
 Vue.component(Row.name, Row);
 Vue.component(Col.name, Col);
@@ -20,6 +27,9 @@ Vue.component(Button.name, Button);
 Vue.component(Checkbox.name, Checkbox);
 Vue.component(List.name, List);
 Vue.component(List.Item.name, List.Item);
+
+Vue.component("base-input", BaseInput);
+Vue.component("base-delete-button", BaseDeleteButton);
 
 Vue.config.productionTip = false;
 

@@ -17,7 +17,7 @@ const moduleTodoList = {
 
     addTodoItem(state, payload) {
       state.todolistArr = [
-        { uuid: uuid(), todoText: payload, isTodo: "true" },
+        { uuid: uuid(), todoText: payload, isTodo: "true", beAddedTimeString: +new Date() },
         ...state.todolistArr
       ];
       localStorage.setItem("todolistArr", JSON.stringify(state.todolistArr));

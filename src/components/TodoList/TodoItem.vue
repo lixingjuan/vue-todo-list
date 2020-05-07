@@ -1,23 +1,18 @@
 <template>
   <li class="todo-item-container">
-    <span :class="{ itemText: true, hadDone: !todoItemProps.isTodo }">
-      {{ todoItemProps.todoText }}
-    </span>
-    <div class="change-item-status">
-      <!-- <input type="checkbox" v-model="checkedStatus" /> -->
-      <base-checkbox
-        :checkedStatusProps="checkedStatus"
-        @getCheckboxStatusEvent="getCheckboxStatus"
-      />
+    <base-checkbox
+      :checkedStatusProps="checkedStatus"
+      @getCheckboxStatusEvent="getCheckboxStatus"
+    />
 
-      <span
-        @click="deleteTodoItem"
-        @keydown="changeDeleteStyle"
-        :class="{ 'item-delete': true, 'delete-icon-is-clicking': deleteIconIsClicking }"
-      >
-        +
-      </span>
+    <div :class="{ itemText: true, hadDone: !todoItemProps.isTodo }">
+      <div>
+        {{ todoItemProps.todoText }}
+      </div>
+      <div class="add-time">{{ timeInterval }}</div>
     </div>
+
+    <base-delete-button @onClick="deleteTodoItem" />
   </li>
 </template>
 
@@ -38,7 +33,8 @@ export default {
   data() {
     return {
       checkedStatus: !this.todoItemProps.isTodo,
-      deleteIconIsClicking: false
+      deleteIconIsClicking: false,
+      timeInterval: ""
     };
   },
   computed: {
@@ -58,17 +54,43 @@ export default {
   },
   created() {
     console.log(this.todoItemProps);
+    this.getTimeInterval();
   },
+  beforeDestroy() {},
   methods: {
     deleteTodoItem() {
       this.$store.commit("deleteTodoItem", this.uuid);
     },
-    changeDeleteStyle() {
-      console.log(1);
-      this.deleteIconIsClicking = !this.deleteIconIsClicking;
-    },
+    // changeDeleteStyle() {
+    //   console.log(1);
+    //   this.deleteIconIsClicking = !this.deleteIconIsClicking;
+    // },
     getCheckboxStatus(checkedStatus) {
       this.checkedStatus = checkedStatus;
+    },
+
+    // toSetItmeOut() {
+    //   setTimeout(() => {
+    //     this.getTimeInterval();
+    //   }, 3000);
+    // },
+
+    getTimeInterval() {
+      const millisecondInterval = (+new Date() - this.todoItemProps.beAddedTimeString) / 1000;
+
+      if (millisecondInterval / 60 ** 3 >= 1) {
+        this.timeInterval = `${(millisecondInterval / 60 ** 3).toFixed()}天前`;
+      } else if (millisecondInterval / 60 ** 2 >= 1) {
+        this.timeInterval = `${(millisecondInterval / 60 ** 2).toFixed()}小时前`;
+      } else if (millisecondInterval / 60 >= 1) {
+        this.timeInterval = `${(millisecondInterval / 60).toFixed()}分钟前`;
+      } else if (millisecondInterval >= 1) {
+        this.timeInterval = `${millisecondInterval.toFixed()}秒前`;
+      } else {
+        this.timeInterval = `${(
+          +new Date() - this.todoItemProps.beAddedTimeString
+        ).toFixed()}毫秒前`;
+      }
     }
   }
 };
@@ -76,47 +98,23 @@ export default {
 
 <style scoped lang="scss">
 .todo-item-container {
-  width: 80%;
-  min-height: 50px;
+  display: grid;
   border: 2px solid #f0f0f0;
-  font-size: 14px;
-  font-variant: tabular-nums;
-  line-height: 50px;
-  list-style: none;
-  font-feature-settings: "tnum";
-  margin: 15px auto 15px auto;
-  padding: 5px 20px;
-  display: flex;
-  justify-content: space-between;
+  grid-template-columns: 10% 80% 10%;
+  justify-items: center;
   align-items: center;
-  &:hover {
-    border-color: #3dbcf6;
+  padding: 10px 0;
+  margin-top: 30px;
+  border-radius: 20px;
+  font-size: 15px;
+  & > div {
+    width: 100%;
   }
-  .itemText {
-    color: rgba(0, 0, 0, 0.65);
-  }
-  .hadDone {
-    text-decoration: line-through;
-  }
-  .change-item-status {
-    width: 12%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .item-finish-wrapper {
-    }
-    .itemFinish::selection {
-      color: #fff;
-      background: #1890ff;
-    }
-    .item-delete {
-      transform: rotate(45deg);
-      color: #000;
-      font-size: 60px;
-      display: inline-block;
-    }
-    .delete-icon-is-clicking {
-      color: #dedede;
+  & > div:nth-child(2) {
+    justify-self: start;
+    align-items: start;
+    .add-time {
+      text-align: right;
     }
   }
 }

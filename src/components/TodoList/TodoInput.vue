@@ -1,6 +1,5 @@
 <template>
   <div id="input-wrap">
-    <!-- <base-input :inputValue="inputItem"></base-input> -->
     <input v-model="inputItem" placeholder="请输入待办事项" @keyup.enter="addTodoItem" />
     <base-button @onClick="addTodoItem" :buttonText="'ADD'" />
   </div>
