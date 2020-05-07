@@ -14,6 +14,7 @@ const moduleTodoList = {
     initTodoItems(state) {
       state.todolistArr = JSON.parse(localStorage.getItem("todolistArr")) || [];
     },
+
     addTodoItem(state, payload) {
       state.todolistArr = [
         { uuid: uuid(), todoText: payload, isTodo: "true" },
@@ -21,11 +22,19 @@ const moduleTodoList = {
       ];
       localStorage.setItem("todolistArr", JSON.stringify(state.todolistArr));
     },
+
     deleteTodoItem(state, beDeletedItemUuid) {
       console.log("触发删除");
       state.todolistArr = state.todolistArr.filter(item => item.uuid !== beDeletedItemUuid);
       localStorage.setItem("todolistArr", JSON.stringify(state.todolistArr));
     },
+
+    deleteAllTodoItems(state) {
+      console.log("触发删除全部");
+      state.todolistArr = [];
+      localStorage.setItem("todolistArr", JSON.stringify(state.todolistArr));
+    },
+
     toggoleTodoItem(state, beToggoledTodoItem) {
       console.log("ce", beToggoledTodoItem.isTodo);
       const { uuid, isTodo } = beToggoledTodoItem;

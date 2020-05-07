@@ -1,14 +1,14 @@
 <template>
-  <div id="pageContainer">
-    <div id="button-group">
-      <base-button @onClick="switchTheme" :buttonText="'更换主题'" />
+  <div id="page-container">
+    <div id="page-container-button-group">
+      <!-- <base-button @onClick="switchTheme" buttonText="更换主题" /> -->
+      <base-button @onClick="deleteAll" buttonText="删除全部" />
     </div>
-    <div :class="currentTheme">
+    <!-- <div :class="currentTheme">
       测试文本
-    </div>
-    <!-- 输入框 -->
+    </div> -->
+
     <todo-input></todo-input>
-    <!-- 列表 -->
     <todo-list></todo-list>
   </div>
 </template>
@@ -33,13 +33,18 @@ export default {
       const themeArr = ["red", "pink"];
       const themeIndex = Math.round(Math.random(0, themeArr.length));
       this.currentTheme = themeArr[themeIndex];
+    },
+    deleteAll() {
+      this.$store.commit("deleteAllTodoItems");
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-#pageContainer {
+$prefix: page-container;
+
+##{$prefix} {
   width: 90%;
   height: 90%;
   border: 5px solid #4c8f38;
@@ -50,8 +55,12 @@ export default {
   align-items: center;
   overflow: scroll;
   border-radius: 30px;
-  #button-group {
+  ##{$prefix}-button-group {
     width: 100%;
+    margin-top: 30px;
+    & > button {
+      margin-left: 30px;
+    }
   }
   .red {
     color: red;
