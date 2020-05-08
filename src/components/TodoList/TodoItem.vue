@@ -6,7 +6,7 @@
     />
 
     <div :class="{ itemText: true, hadDone: !todoItemProps.isTodo }">
-      <div>
+      <div :class="{ hadDone: !todoItemProps.isTodo }">
         {{ todoItemProps.todoText }}
       </div>
       <div class="add-time">{{ timeInterval }}</div>
@@ -100,7 +100,7 @@ export default {
 .todo-item-container {
   display: grid;
   border: 2px solid #f0f0f0;
-  grid-template-columns: 10% 80% 10%;
+  grid-template-columns: 5% 80% 10%;
   justify-items: center;
   align-items: center;
   padding: 10px 0;
@@ -110,12 +110,18 @@ export default {
   & > div {
     width: 100%;
   }
+  & > div:nth-child(1) {
+    text-align: center;
+  }
   & > div:nth-child(2) {
     justify-self: start;
     align-items: start;
     .add-time {
       text-align: right;
     }
+  }
+  .hadDone {
+    text-decoration: line-through;
   }
 }
 </style>
