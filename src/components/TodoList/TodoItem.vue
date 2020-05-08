@@ -5,7 +5,7 @@
       @getCheckboxStatusEvent="getCheckboxStatus"
     />
 
-    <div :class="{ itemText: true, hadDone: !todoItemProps.isTodo }">
+    <div class="itemText">
       <div :class="{ hadDone: !todoItemProps.isTodo }">
         {{ todoItemProps.todoText }}
       </div>
