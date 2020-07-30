@@ -6,7 +6,7 @@
  -->
 <template>
   <div id="app">
-    <!-- <app-header></app-header> -->
+    <app-header></app-header>
     <transition name="page" tag="div" id="todoList">
       <router-view></router-view>
     </transition>
@@ -14,11 +14,14 @@
 </template>
 
 <script>
-// import { AppHeader } from "./components/App/index";
+import { AppHeader } from './components/App/index';
 
 export default {
-  name: "app",
-  // components: { AppHeader },
+  name: 'app',
+  components: { AppHeader },
+  data() {
+    return {};
+  },
   methods: {}
 };
 </script>

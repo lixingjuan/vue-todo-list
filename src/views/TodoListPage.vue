@@ -6,12 +6,23 @@
 
     <todo-input></todo-input>
     <todo-list></todo-list>
+
+    <ul>
+      <li v-for="(item, index) in demoArr" :key="item.demo">
+        {{ item.id }}
+        <button @click="deleteItem(index)">删除</button>
+      </li>
+    </ul>
+    <div>
+      <h1>测试渲染</h1>
+      {{ getTemplete() }}
+    </div>
   </div>
 </template>
 
 <script>
-import { BaseButton } from "@/components/BaseComponents";
-import { TodoList, TodoInput } from "@/components/TodoList";
+import { BaseButton } from '@/components/BaseComponents';
+import { TodoList, TodoInput } from '@/components/TodoList';
 
 export default {
   components: {
@@ -21,17 +32,68 @@ export default {
   },
   data() {
     return {
-      currentTheme: ""
+      currentTheme: '',
+      demoArr: [
+        {
+          demo: '11',
+          value: 11
+        },
+        {
+          demo: '11',
+          value: 22
+        },
+        {
+          demo: '11',
+          value: 33
+        },
+        {
+          demo: '11',
+          value: 4
+        },
+        {
+          demo: '11',
+          value: 5
+        },
+        {
+          demo: '11',
+          value: 6
+        },
+        {
+          demo: '11',
+          value: 7
+        },
+        {
+          demo: '11',
+          value: 8
+        },
+        {
+          demo: '11',
+          value: 9
+        },
+        {
+          demo: '11',
+          value: 10
+        }
+      ]
     };
   },
   methods: {
     switchTheme() {
-      const themeArr = ["red", "pink"];
+      const themeArr = ['red', 'pink'];
       const themeIndex = Math.round(Math.random(0, themeArr.length));
       this.currentTheme = themeArr[themeIndex];
     },
     deleteAll() {
-      this.$store.commit("deleteAllTodoItems");
+      this.$store.commit('deleteAllTodoItems');
+    },
+    deleteItem(index) {
+      this.demoArr.splice(index, 1);
+    },
+    getTemplete() {
+      // return this.$createElement(`<div>hahah</div>`);
+      return this.$createElement(
+        'h' + 1 // 标签名称
+      );
     }
   }
 };
